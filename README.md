@@ -1,11 +1,22 @@
 # react-minimal-template
 
+Includes:
+- webpack
+- webpack dev server with hot reload
+- eslint
+- react
+- babel
 
-npm install
+## Setup
 
-npm run dev
+```
+yarn
+```
 
-npm run prod
+## Run
 
-npm run start
+```
+yarn start
+```
 
+Open [http://localhost:8080/](http://localhost:8080/)
