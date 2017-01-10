@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Container from './containers/Container'
+import '../index.html'
 
 const start = () => {
   /* eslint-disable no-console */

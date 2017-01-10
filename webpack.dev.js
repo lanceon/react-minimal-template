@@ -2,9 +2,8 @@ const webpack = require('webpack');
 const path = require('path');
 
 const DEV_SERVER = 'http://localhost:8080/';
-const PUBLIC_PATH = '/static/';
+const PUBLIC_PATH = '/';
 const DEV_BUILD = path.resolve(__dirname, 'build', 'dev');
-const PROD_BUILD = path.resolve(__dirname, 'build', 'prod');
 
 module.exports = {
   resolve: {
