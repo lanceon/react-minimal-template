@@ -10,7 +10,6 @@ Includes:
 ## Setup
 
 ```
-yarn global add cross-env
 yarn
 ```
 

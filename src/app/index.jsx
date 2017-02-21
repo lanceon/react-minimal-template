@@ -1,6 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { Provider } from 'react-redux'
 import Container from './containers/Container'
+import store from './store'
 import '../index.html'
 
 const start = () => {
@@ -9,7 +11,9 @@ const start = () => {
   /* eslint-enable */
 
   ReactDOM.render(
-    <Container />,
+    <Provider store={store}>
+      <Container />
+    </Provider>,
     document.getElementById('app')
   )
 }
