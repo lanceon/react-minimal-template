@@ -16,10 +16,10 @@ const Form = ({ textFromState, textFromStore, onChange, onSubmit }) =>
   </form>
 
 Form.propTypes = {
-  textFromState: PropTypes.string,
-  textFromStore: PropTypes.string,
-  onChange: PropTypes.func,
-  onSubmit: PropTypes.func,
+  textFromState: PropTypes.string.isRequired,
+  textFromStore: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
 }
 
 export default Form

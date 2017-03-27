@@ -2,7 +2,7 @@
 
 Includes:
 - webpack
-- webpack dev server with hot reload
+- webpack-dev-server with hot reloading
 - eslint
 - react
 - babel
@@ -19,7 +19,7 @@ yarn
 yarn start
 ```
 
-Open [http://localhost:8080/](http://localhost:8080/)
+Open URL in a browser: <http://localhost:8080/> 
 
 ## Production Build
 
@@ -27,7 +27,7 @@ Open [http://localhost:8080/](http://localhost:8080/)
 yarn build
 ```
 
-Output is written to `build` folder.
+Minified output is written to `build` folder.
 
 ## Development Server with Production Build
 

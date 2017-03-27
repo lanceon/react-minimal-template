@@ -3,8 +3,8 @@ import Form from '../../components/Form'
 
 class Container extends React.Component {
   static propTypes = {
-    textFromStore: PropTypes.string,
-    textChanged: PropTypes.func,
+    textFromStore: PropTypes.string.isRequired,
+    textChanged: PropTypes.func.isRequired,
   }
 
   state = {

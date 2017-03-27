@@ -1,13 +1,16 @@
-module.exports = {
-  devServer: {
+import {
+  DEV_PORT,
+} from '../Constants'
+
+const devServer = {
     historyApiFallback: true,
-    open: true,
     contentBase: 'build',
     stats: {
       colors: true,
     },
-    port: 8080,
+    port: DEV_PORT,
     noInfo: false,
-  },
+  }
 }
 
+export default devServer

@@ -1,44 +1,48 @@
 const webpack = require('webpack')
 const path = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const {
+  resolve,
+  entry,
+  srcPath,
+  buildPath,
+  nodeModulesPath,
+} = require('./shared')
 
 const PUBLIC_PATH = '/'
 
 module.exports = {
-  resolve: {
-    extensions: ['', '.js', '.jsx', '.json', '.css', '.scss'],
-  },
-  entry: './src/app/index',
+  resolve,
+  entry,
   output: {
-    path: path.resolve(__dirname, 'build'),
+    path: buildPath,
     filename: 'app.js',
     publicPath: PUBLIC_PATH,
   },
   devtool: 'source-map',
   module: {
-    preLoaders: [
+    rules: [
       {
         test: /\.jsx?$/,
-        exclude: path.resolve(__dirname, 'node_modules'),
-        loaders: ['eslint'],
+        enforce: 'pre',
+        exclude: nodeModulesPath,
+        use: ['eslint-loader'],
       },
-    ],
-    loaders: [
       {
         test: /\.jsx?$/,
         include: [
-          path.resolve(__dirname, 'src'),
+          path.resolve(srcPath),
         ],
         exclude: /node_modules/,
-        loaders: ['babel'],
+        use: ['react-hot-loader/webpack', 'babel-loader'],
       },
       {
         test: /\.scss$/,
-        loaders: ['style', 'css'],
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.(html|txt|png|jpe?g)/,
-        loaders: ['file?name=[name].[ext]'],
+        use: ['file-loader'],
       },
     ],
   },
@@ -49,18 +53,21 @@ module.exports = {
         NODE_ENV: JSON.stringify('production'),
       },
     }),
-    new ExtractTextPlugin('style.css', { allChunks: true }),
-    new webpack.optimize.UglifyJsPlugin({
+    new ExtractTextPlugin({
+      filename: 'css/[name].css',
+      disable: false,
+      allChunks: true,
+    }),
+    /*new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false,
         dead_code: true,
         unused: true,
         evaluate: true,
       },
-      comments: false,
-    }),
+      com
+
+      ments: false,
+    }),*/
   ],
-  eslint: {
-    emitWarnings: true,
-  },
 }
