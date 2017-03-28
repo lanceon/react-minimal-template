@@ -2,33 +2,34 @@
 
 Includes:
 - webpack
-- webpack dev server with hot reload
+- webpack-dev-server with hot reloading
 - eslint
 - react
 - babel
 
 ## Setup
 
-```
-yarn global add cross-env
+```sh
+git clone https://github.com/lanceon/react-minimal-template.git
+cd react-minimal-template
 yarn
 ```
 
-## Development Server with Hot Reload
+## Run Development Server with Hot Reload
 
-```
+```sh
 yarn start
 ```
 
-Open [http://localhost:8080/](http://localhost:8080/)
+Open URL in a browser: <http://localhost:8080/> 
 
-## Production Build
+## Make Production Build
 
 ```
 yarn build
 ```
 
-Output is written to `build` folder.
+Minified output is written to `build` folder.
 
 ## Development Server with Production Build
 
@@ -36,4 +37,4 @@ Output is written to `build` folder.
 yarn server
 ```
 
-
+http://stackoverflow.com/questions/34076117/how-to-use-babel-runtime-in-babel-6

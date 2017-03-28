@@ -1,17 +1,23 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { Provider } from 'react-redux'
 import Container from './containers/Container'
+import store from './store'
 import '../index.html'
 
-const start = () => {
-  /* eslint-disable no-console */
+const notify = () => {
+  // eslint-disable-next-line
   console.log('app.js started')
-  /* eslint-enable */
+}
 
+const start = () => {
   ReactDOM.render(
-    <Container />,
+    <Provider store={store}>
+      <Container />
+    </Provider>,
     document.getElementById('app')
   )
 }
 
+notify()
 start()
