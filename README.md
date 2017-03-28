@@ -2,38 +2,31 @@
 
 Includes:
 - webpack
-- webpack dev server with hot reload
+- webpack-dev-server with hot reloading
 - eslint
 - react
 - babel
 
 ## Setup
 
-```
-yarn global add cross-env
+```sh
+git clone https://github.com/lanceon/react-minimal-template.git
+cd react-minimal-template
 yarn
 ```
 
-## Development Server with Hot Reload
+## Run Development Server with Hot Reload
 
-```
+```sh
 yarn start
 ```
 
-Open [http://localhost:8080/](http://localhost:8080/)
+Open URL in a browser: <http://localhost:8080/> 
 
-## Production Build
+## Make Production Build
 
 ```
 yarn build
 ```
 
-Output is written to `build` folder.
-
-## Development Server with Production Build
-
-```
-yarn server
-```
-
-
+Minified output is written to `build` folder.
