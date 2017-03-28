@@ -1,25 +1,22 @@
 import React, { PropTypes } from 'react'
-import TextBox from '../components/TextBox'
 
-const Form = ({ textFromState, textFromStore, onChange, onSubmit }) =>
+const Form = ({ text, onChange, onSubmit }) =>
   <form onSubmit={(e) => { e.preventDefault(); onSubmit() }}>
     <input
       type="text"
-      value={textFromState}
+      value={text}
       onChange={e => onChange(e.target.value)}
     />
     <input
       type="submit"
       value="Submit"
     />
-    <TextBox text={`Text from store: [${textFromStore}]`} />
   </form>
 
 Form.propTypes = {
-  textFromState: PropTypes.string.isRequired,
-  textFromStore: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
+  text: PropTypes.string,
+  onChange: PropTypes.func,
+  onSubmit: PropTypes.func,
 }
 
 export default Form
