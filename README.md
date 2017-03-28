@@ -30,11 +30,3 @@ yarn build
 ```
 
 Minified output is written to `build` folder.
-
-## Development Server with Production Build
-
-```
-yarn server
-```
-
-http://stackoverflow.com/questions/34076117/how-to-use-babel-runtime-in-babel-6
