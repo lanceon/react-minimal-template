@@ -1,11 +1,19 @@
 const webpack = require('webpack')
 const path = require('path')
+const Logger = require('logplease')
+
 const {
+  DEV_PORT,
+  rootPath,
   srcPath,
   buildPath,
   nodeModulesPath,
-  DEV_PORT,
 } = require('../Constants')
+
+const logger = Logger.create('webpack', {
+  color: Logger.Colors.Magenta,
+  showTimestamp: false,
+})
 
 const resolve = {
   extensions: [
@@ -18,11 +26,13 @@ const resolve = {
 }
 
 module.exports = {
+  DEV_PORT,
+  DEV_SERVER: `http://localhost:${DEV_PORT}/`,
+  logger,
   resolve,
   entry: './src/app/index',
+  rootPath,
   buildPath,
   srcPath,
   nodeModulesPath,
-  DEV_PORT,
-  DEV_SERVER: `http://localhost:${DEV_PORT}/`,
 }

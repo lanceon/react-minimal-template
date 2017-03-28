@@ -1,15 +1,19 @@
 const webpack = require('webpack')
-const path = require('path')
 const {
+  DEV_SERVER,
+  DEV_PORT,
+  logger,
   resolve,
   entry,
   srcPath,
   nodeModulesPath,
-  DEV_SERVER,
 } = require('./shared')
+const path = require('path')
 
 const PUBLIC_PATH = '/'
 const DEV_BUILD = path.resolve(__dirname, 'build', 'dev')
+
+logger.info(`Dev server: ${DEV_SERVER}`)
 
 module.exports = {
   resolve,
@@ -19,17 +23,22 @@ module.exports = {
     entry,
   ],
   output: {
+    path: DEV_BUILD,
     publicPath: PUBLIC_PATH,
     filename: 'app.js',
-    path: DEV_BUILD,
   },
   devServer: {
+    historyApiFallback: true,
+    stats: {
+      colors: true,
+    },
+    noInfo: false,
     contentBase: srcPath,
     proxy: {
       '/api': 'http://localhost:3000',
     },
     hot: true,
-    historyApiFallback: true,
+    port: DEV_PORT,
     publicPath: PUBLIC_PATH,
   },
   devtool: 'source-eval',

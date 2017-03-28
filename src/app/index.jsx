@@ -5,11 +5,12 @@ import Container from './containers/Container'
 import store from './store'
 import '../index.html'
 
-const start = () => {
-  /* eslint-disable no-console */
+const notify = () => {
+  // eslint-disable-next-line
   console.log('app.js started')
-  /* eslint-enable */
+}
 
+const start = () => {
   ReactDOM.render(
     <Provider store={store}>
       <Container />
@@ -18,4 +19,5 @@ const start = () => {
   )
 }
 
+notify()
 start()

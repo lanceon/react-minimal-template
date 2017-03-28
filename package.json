@@ -20,13 +20,13 @@
   },
   "homepage": "https://github.com/lanceon/react-minimal-template#readme",
   "scripts": {
-    "start": "webpack-dev-server --config config/webpack/development.js --progress --colors --hot --port 8080",
-    "build": "cross-env BABEL_ENV=production webpack -p --config config/webpack/production.js --colors --progress --display-modules --display-chunks",
-    "server": "webpack-dev-server --config config/server/server.js",
-    "prod": "yarn build && yarn server",
+    "start": "webpack-dev-server --config config/webpack/development.js --progress",
+    "build": "webpack -p --config config/webpack/production.js --colors --progress --display-modules --display-chunks",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "clean-webpack-plugin": "^0.1.16",
+    "logplease": "^1.2.13",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.3",
@@ -55,7 +55,7 @@
     "less-loader": "^4.0.2",
     "react-hot-loader": "^3.0.0-beta.3",
     "redux-devtools": "^3.3.2",
-    "style-loader": "^0.16.0",
+    "style-loader": "^0.16.1",
     "webpack": "^2.3.2",
     "webpack-dev-server": "^2.4.2"
   },
