@@ -1,8 +1,7 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Form from '../components/Form'
 
-class Container extends React.Component {
-
+class Container extends Component {
   state = {
     text: '',
   }

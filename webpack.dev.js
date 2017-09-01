@@ -1,18 +1,18 @@
-const webpack = require('webpack');
-const path = require('path');
+const webpack = require('webpack')
+const path = require('path')
 
-const DEV_SERVER = 'http://localhost:8080/';
-const PUBLIC_PATH = '/';
-const DEV_BUILD = path.resolve(__dirname, 'build', 'dev');
+const DEV_SERVER = 'http://localhost:8080/'
+const PUBLIC_PATH = '/'
+const DEV_BUILD = path.resolve(__dirname, 'build', 'dev')
 
 module.exports = {
   resolve: {
-    extensions: ['', '.js', '.jsx', '.json', '.css', '.scss'],
+    extensions: ['.js', '.jsx', '.json', '.css', '.scss'],
   },
   entry: [
     `webpack-dev-server/client?${DEV_SERVER}`,
     'webpack/hot/only-dev-server',
-    './src/app/index',
+    './src/app/index.jsx',
   ],
   output: {
     publicPath: PUBLIC_PATH,
@@ -27,36 +27,38 @@ module.exports = {
   },
   devtool: 'source-eval',
   module: {
-    preLoaders: [
+    rules: [
       {
         test: /\.jsx?$/,
         exclude: path.resolve(__dirname, 'node_modules'),
-        loaders: ['eslint'],
+        loader: 'eslint-loader',
+        enforce: 'pre',
       },
-    ],
-    loaders: [
       {
         test: /\.jsx?$/,
         include: [
           path.resolve(__dirname, 'src'),
         ],
         exclude: /node_modules/,
-        loaders: ['react-hot-loader/webpack', 'babel'],
+        use: [
+          'react-hot-loader/webpack',
+          'babel-loader',
+        ],
       },
       {
         test: /\.scss$/,
-        loaders: ['style', 'css'],
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader' },
+        ],
       },
       {
         test: /\.(html|txt|png|jpe?g)/,
-        loaders: ['file'],
+        use: [
+          { loader: 'file-loader' },
+        ],
       },
     ],
   },
-  plugins: [
-    new webpack.NoErrorsPlugin(),
-  ],
-  eslint: {
-    emitWarnings: true,
-  },
-};
+  plugins: [],
+}

@@ -35,5 +35,3 @@ Output is written to `build` folder.
 ```
 yarn server
 ```
-
-

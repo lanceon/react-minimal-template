@@ -6,9 +6,9 @@ const PUBLIC_PATH = '/'
 
 module.exports = {
   resolve: {
-    extensions: ['', '.js', '.jsx', '.json', '.css', '.scss'],
+    extensions: ['.js', '.jsx', '.json', '.css', '.scss'],
   },
-  entry: './src/app/index',
+  entry: './src/app/index.jsx',
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: 'app.js',
@@ -16,29 +16,40 @@ module.exports = {
   },
   devtool: 'source-map',
   module: {
-    preLoaders: [
+    rules: [
       {
         test: /\.jsx?$/,
         exclude: path.resolve(__dirname, 'node_modules'),
-        loaders: ['eslint'],
+        loader: 'eslint-loader',
+        enforce: 'pre',
       },
-    ],
-    loaders: [
       {
         test: /\.jsx?$/,
         include: [
           path.resolve(__dirname, 'src'),
         ],
         exclude: /node_modules/,
-        loaders: ['babel'],
+        use: [
+          'babel-loader',
+        ],
       },
       {
         test: /\.scss$/,
-        loaders: ['style', 'css'],
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader' },
+        ],
       },
       {
         test: /\.(html|txt|png|jpe?g)/,
-        loaders: ['file?name=[name].[ext]'],
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+            },
+          },
+        ],
       },
     ],
   },
@@ -47,20 +58,9 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production'),
+        BABEL_ENV: JSON.stringify('production'),
       },
     }),
     new ExtractTextPlugin('style.css', { allChunks: true }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false,
-        dead_code: true,
-        unused: true,
-        evaluate: true,
-      },
-      comments: false,
-    }),
   ],
-  eslint: {
-    emitWarnings: true,
-  },
 }
