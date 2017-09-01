@@ -2,19 +2,20 @@
 
 Includes:
 - webpack
-- webpack dev server with hot reload
+- dev server with hot reload
 - eslint
 - react
 - babel
 
 ## Setup
 
+Install dependencies:
+
 ```
-yarn global add cross-env
 yarn
 ```
 
-## Development Server with Hot Reload
+Run dev server with hot reloading:
 
 ```
 yarn start
@@ -22,16 +23,10 @@ yarn start
 
 Open [http://localhost:8080/](http://localhost:8080/)
 
-## Production Build
+Create static production bundle:
 
 ```
 yarn build
 ```
 
-Output is written to `build` folder.
-
-## Development Server with Production Build
-
-```
-yarn server
-```
+Output is written to `PROJECT/build` folder.
